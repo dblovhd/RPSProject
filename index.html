@@ -9,6 +9,47 @@
 
   <script>
     console.log("Hello World")
+    //initialize variable to track computer score with value of 0
+    let compScore = 0;
+    //initialize variable to track human score with value of 0
+    let humanScore = 0;
+    // constant to store computer selection
+    const compSelection = getComputerChoice();
+    //constant to store human selection
+    const humanSelection = getHumanChoice();
+
+    console.log(compSelection);
+    console.log(humanSelection);
+
+    /**
+    Function that generates a random string with the value of 
+    rock, paper or scissors using the Math.random() and returns the 
+    computer choice as a string.
+    **/
+    function getComputerChoice () {
+      compChoice = Math.random();
+        if(compChoice <= .3) {
+          compChoice = "rock";
+        }
+        else if(compChoice >= .3 && compChoice <= .6) {
+          compChoice = "paper"; 
+        }
+        else {
+          compChoice = "scissors"
+        }
+      return compChoice;
+    }
+    /**
+    Function that prompts user for  value of  rock, paper or scissors 
+    and returns humans choice as a string in lowercase. 
+    **/
+    function getHumanChoice () {
+      humanChoice = prompt("Your Choice?");
+      humanChoice = humanChoice.toLowerCase();
+      return humanChoice;
+    }
+
+
   </script>
 
 </body>
