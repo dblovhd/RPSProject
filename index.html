@@ -8,19 +8,105 @@
 <body>
 
   <script>
-    console.log("Hello World")
-    //initialize variable to track computer score with value of 0
-    let compScore = 0;
-    //initialize variable to track human score with value of 0
-    let humanScore = 0;
-    // constant to store computer selection
-    const compSelection = getComputerChoice();
-    //constant to store human selection
-    const humanSelection = getHumanChoice();
+    //function call to start 5 rounds of rock, paper, scissors
+    playGame ();
 
-    console.log(compSelection);
-    console.log(humanSelection);
+    /**
+    Play 5 rounds while keeping score for each round. 
+    At the end of 5 rounds scores are calculated and winner or 
+    draw is determined.
+    **/
+    function playGame () {
+      //initialize variable to track computer score with value of 0
+      let compScore = 0;
+      //initialize variable to track human score with value of 0
+      let humanScore = 0;
+      //initialize variable to set while iteration 
+      let i = 0;
+      //initialize variable to track number of rounds
+      let numOfRounds = 5;
+      //while loop to play 5 rounds 
+      while (i < numOfRounds) {
+        //constant to store computer selection
+        const compSelection = getComputerChoice();
+        //constant to store human selection
+        const humanSelection = getHumanChoice();
+        //function call with 2 parameters for computer and human selection to play round 
+        playRound(compSelection, humanSelection);
+        //increase value of i by 1 until 5 rounds are played 
+        i++;
+      }
+      //Compares values of compScore and humanScore to determine results after 5 ronuds
+      if (compScore > humanScore){
+      console.log("Computer Scored " + compScore + ". You Scored " + humanScore + ". You lose, better luck next time!");
+      }
+      else if (compScore < humanScore) {
+      console.log("You Scored " + humanScore + "! Computer Scored " + compScore + ". You Win! Good Job!");
+      }
+      else {
+      console.log("It's a draw, play again!");
+      }
 
+      /**
+      Function that compares comp and human choice values and determines 
+      result for a round. Winner of round gets one point added to their
+      score.
+      **/
+      function playRound (compChoice, humanChoice) {      
+        if(compChoice === 'rock' && humanChoice === 'scissors') {
+          console.log("You lose, rock beats scissors.");
+          compScore = compScore + 1;
+        }
+        else if(compChoice === 'rock' && humanChoice === 'paper') {
+          console.log("You win, paper beats rock.");
+          humanScore = humanScore + 1;
+        }
+        else if(compChoice === 'scissors' && humanChoice === 'rock') {
+          console.log("You win, rock beat scissors.");
+          humanScore = humanScore + 1;
+        }
+        else if(compChoice === 'scissors' && humanChoice === 'paper') {
+          console.log("You lose, scissors beats paper.");
+          compScore = compScore + 1;
+        }
+        else if(compChoice === 'paper' && humanChoice === 'rock') {
+          console.log("You lose, paper beats rock.");
+          compScore = compScore + 1;
+        }
+        else if(compChoice === 'paper' && humanChoice === 'scissors') {   
+          console.log("You win, scissors beats paper.");
+          humanScore = humanScore + 1;
+        }
+        else if(humanChoice === 'rock' && compChoice === 'scissors') {
+          console.log("You win, rock beats scissors.");
+          humanScore = humanScore + 1;
+        }
+        else if(humanChoice === 'rock' && compChoice === 'paper') {
+          console.log("You lose, rock beats paper.");
+          compScore = compScore + 1;
+        }
+        else if(humanChoice === 'scissors' && compChoice === 'rock') {
+          console.log("You lose, rock beats scissors.")
+          compScore = compScore + 1;
+        }
+        else if(humanChoice === 'scissors' && compChoice === 'paper') {
+          console.log("You win, scissor beats paper.")
+          humanScore = humanScore + 1;
+        }
+        else if(humanChoice === 'paper' && compChoice === 'rock') {
+          console.log("You win, paper beats rock.")
+          humanScore = humanScore + 1;
+        }
+        else if(humanChoice === 'paper' && compChoice === 'scissors') {        
+          console.log("You lose, paper beats scissors.")
+          compScore = compScore + 1;
+        }
+        else {
+          console.log("It's a tie!")
+        }
+      }
+    } 
+    
     /**
     Function that generates a random string with the value of 
     rock, paper or scissors using the Math.random() and returns the 
@@ -48,7 +134,6 @@
       humanChoice = humanChoice.toLowerCase();
       return humanChoice;
     }
-
 
   </script>
 
